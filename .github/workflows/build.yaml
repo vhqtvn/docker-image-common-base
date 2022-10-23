@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
         name: Checkout 
         uses: actions/checkout@v3
         with:
@@ -33,6 +39,5 @@ jobs:
         with:
           context: ./
           file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:latest,${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ steps.vars.outputs.IMAGE_TAG }}
