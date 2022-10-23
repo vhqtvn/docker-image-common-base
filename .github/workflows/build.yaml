@@ -36,5 +36,3 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:latest,${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ steps.vars.outputs.IMAGE_TAG }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:buildcache,mode=max
