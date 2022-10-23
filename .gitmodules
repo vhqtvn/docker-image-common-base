@@ -1,0 +1,9 @@
+[submodule "php"]
+	path = php
+	url = https://github.com/docker-library/php
+[submodule "pandoc"]
+	path = pandoc
+	url = https://github.com/pandoc/dockerfiles
+[submodule "composer"]
+	path = composer
+	url = https://github.com/composer/docker
