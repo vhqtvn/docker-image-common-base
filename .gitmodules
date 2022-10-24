@@ -7,3 +7,6 @@
 [submodule "composer"]
 	path = composer
 	url = https://github.com/composer/docker
+[submodule "docker-node"]
+	path = docker-node
+	url = https://github.com/nodejs/docker-node.git
