@@ -18,10 +18,9 @@ else
         echo "Adding user" >&2
         adduser -s /bin/bash -u $HUID -D "${PUSER}" 1>&2
         export HOME="/home/${PUSER}"
-        apk add sudo
         echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel
         addgroup "${PUSER}" wheel
     fi
 
-    su "${PUSER}" -c "$@"
+    su "${PUSER}" -c sh "$@"
 fi
