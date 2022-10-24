@@ -33,6 +33,8 @@ RUN set -eux; \
     docker-php-ext-install xml xmlwriter zip && \
     apk del --no-network .build-deps
 
+RUN deluser --remove-home node
+
 FROM alpine:3.16 as main
 
 COPY --from=vhmain-builder / /
