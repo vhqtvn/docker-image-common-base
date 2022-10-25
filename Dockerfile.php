@@ -42,6 +42,7 @@ COPY --from=vhmain-builder / /
 WORKDIR /app
 
 COPY ./bin/wrap-uid.sh /usr/bin/
+COPY ./utils/sync/sync.so /vh/lib/
 
 ENTRYPOINT ["bash"]
 
