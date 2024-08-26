@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker run --rm -v $(pwd)/utils/sync:/app/sync -w /app/sync alpine:3.16 sh -c "apk add g++; g++ -fPIC -shared sync.c -o sync.so; sync"
-php -d auto_prepend_file=includes/boot.php Dockerfile.php > Dockerfile
+BUILD_SLIM=1 php -d auto_prepend_file=includes/boot.php Dockerfile.php > Dockerfile
+BUILD_SLIM=0 php -d auto_prepend_file=includes/boot.php Dockerfile.php > Dockerfile-full

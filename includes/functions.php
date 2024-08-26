@@ -29,6 +29,17 @@ function dockerfile_include_dir($name, $dir, $cwd = null, $opts = [])
         if (!$continue) switch ($cmd = strtoupper(($toks = preg_split("!\s!", trim($line)))[0])) {
             case "ADD":
                 throw new Exception("Usage of ADD command: $line");
+            case "ARG":
+                if (count($toks) < 2) {
+                    throw new Exception("invalid line: $line: ".var_export($toks, true));
+                }
+                [$k, $v] = explode("=", $toks[1], 2);
+                if (isset($opts['arg_replace']) && isset($opts['arg_replace'][$k])) {
+                    $toks[1] = "$k=" . $opts['arg_replace'][$k];
+                    $line = implode(" ", $toks) . "\n";
+                }
+                echo $line;
+                break;
             case "COPY":
                 $changed = false;
                 for ($fr = 1; $fr < count($toks) && str_starts_with($toks[$fr], "--"); $fr++) {
