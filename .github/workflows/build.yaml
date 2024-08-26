@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./
-          file: ./Dockerfile-slim
+          file: ./Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:latest,${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ steps.vars.outputs.IMAGE_TAG }}
@@ -47,7 +47,7 @@ jobs:
       #   uses: docker/build-push-action@v6
       #   with:
       #     context: ./
-      #     file: ./Dockerfile
+      #     file: ./Dockerfile-full
       #     push: true
       #     platforms: linux/amd64,linux/arm64
       #     tags: ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:latest,${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ steps.vars.outputs.IMAGE_TAG }}-full
