@@ -31,12 +31,10 @@ RUN apk --no-cache add \
 RUN apk add --no-cache sudo
 
 RUN set -eux; \
-	apk add --no-cache --virtual .build-deps \
-		libxml2-dev \
+	apk add libxml2-dev \
 		libzip-dev \
 	; \
-    docker-php-ext-install xml xmlwriter zip && \
-    apk del --no-network .build-deps
+    docker-php-ext-install xml xmlwriter zip
 
 RUN deluser --remove-home node
 
