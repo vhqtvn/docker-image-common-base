@@ -108,8 +108,7 @@ jobs:
       -
         name: Create and push manifest
         run: |
-          docker manifest create ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }} ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }}-arm64 ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }}-amd64
-          docker manifest push ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }}
+          docker buildx imagetools create -t ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }} ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }}-arm64 ${{ secrets.DOCKER_HUB_USERNAME }}/common-base-for-text:${{ needs.variables.outputs.IMAGE_TAG }}-amd64
         
       # -
       #   name: Build and push full
